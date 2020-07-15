@@ -1,0 +1,14 @@
+{% extends "classroom/base.html" %}
+{% block content %}
+    {% for module in modules %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ module.module_author }}</a>
+            </div>
+            <h2><a class="article-title" href="{% url 'post' module.id %}">{{ module.module_title }}</a></h2>
+            <p class="article-content">{{ module.module_description }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

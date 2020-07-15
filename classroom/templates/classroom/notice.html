@@ -1,0 +1,21 @@
+{% extends "classroom/base.html" %}
+{% block content %}
+    {% for noticess in notice_obj %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ noticess.author }}</a>
+              <small class="text-muted">{{ noticess.date_posted | date:"F d, Y"  }}</small>
+            </div>
+            <h2><a class="article-title">{{ noticess.title_notice }}</a></h2>
+
+            <p class="article-content">{{ noticess.content }}</p>
+            {% if noticess.notice.url != 'NULL' %}
+    		 <p> <a href="{{noticess.notice.url }}">Download Notice</a></p>
+             {%endif%}
+
+
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

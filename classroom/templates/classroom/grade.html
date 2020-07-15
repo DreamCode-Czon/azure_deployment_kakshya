@@ -1,0 +1,14 @@
+{% extends "classroom/base.html" %}
+{% block content %}
+    {% for grade in grades %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+
+            </div>
+            <h2><a class="article-title" href="{% url 'module' grade.id %}">{{ grade.grade_title }}</a></h2>
+            <p class="article-content">{{ grade.grade_description }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
