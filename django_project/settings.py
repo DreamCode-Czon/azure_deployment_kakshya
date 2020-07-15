@@ -86,9 +86,9 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'kakshya',
-        'USER': 'dreamCode@kakshya',
-        'PASSWORD': 'Czon@Herald75',
+        'NAME': 'myproject',
+        'USER': 'myadmin@kakshya',
+        'PASSWORD': 'ThisIs4P4ssw0rd!=1',
         'HOST': 'kakshya.postgres.database.azure.com',
         'PORT': '5432',
         'OPTIONS': {
