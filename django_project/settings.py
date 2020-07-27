@@ -89,7 +89,7 @@ DATABASES = {
         'NAME': 'myproject',
         'USER': 'myadmin@kakshya',
         'PASSWORD': 'ThisIs4P4ssw0rd!=1',
-        'HOST': 'kakshya.postgres.database.azure.com',
+        'HOST': 'pgdemoserver.postgres.database.azure.com',
         'PORT': '5432',
         'OPTIONS': {
             'sslmode': 'require',
