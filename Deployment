@@ -1,0 +1,25 @@
+az group create --name kakshyaRG --location "southeastasia"
+
+az postgres server create --resource-group kakshyaRG --name kakshyaserver  --location westeurope --admin-user myadmin --admin-password ThisIs4P4ssw0rd!=1 --sku-name B_Gen5_1
+
+az postgres server firewall-rule create -g kakshyaRG -s kakshyaserver -n allowall --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+
+ psql --host=kakshyaserver.postgres.database.azure.com --port=5432 --username=myadmin@kakshyaserver --dbname=postgres
+ 
+ az appservice plan create -g kakshyaRG -n DjangoServicePlan --is-linux --number-of-workers 1 --sku S1 -l southeastasia
+
+az webapp create --resource-group kakshyaRG --plan DjangoServicePlan --name kakshya --runtime "PYTHON|3.7" 
+
+az webapp update --name kakshya --resource-group kakshyaRG --client-affinity-enabled false --https-only true
+
+az webapp config set --name kakshya --resource-group kakshyaRG  --http20-enabled  true --ftps-state Disabled --always-on false
+
+az webapp config appsettings set -g kakshyaRG -n kakshya --settings DATABASE_NAME=myproject
+
+az webapp config appsettings set -g kakshyaRG -n kakshya --settings DATABASE_USER=myadmin@kakshyaserver
+
+ az webapp config appsettings set -g kakshyaRG -n kakshya --settings DATABASE_PASSWORD=ThisIs4P4ssw0rd!=1
+ 
+az webapp config appsettings set -g kakshyaRG -n kakshya --settings DATABASE_HOST=kakshyaserver.postgres.database.azure.com
+
+az webapp config appsettings set -g kakshyaRG -n kakshya --settings DATABASE_PORT=5432
